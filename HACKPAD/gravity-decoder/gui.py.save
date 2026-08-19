@@ -1,0 +1,286 @@
+import tkinter as tk
+import tkinter.font as tkfont
+
+
+def select_cipher(mode, cipher):
+    if cipher == "THERAPRISM":
+        characters = list("ABCDEFGHIJKLMNOPQRSTUVWXY")
+    else:
+        characters = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+    selected = 0
+    message = ""
+    cursor = 0
+
+    theraprism_font = tkfont.Font(
+        family="The Book of Bill",
+        size=40
+    )
+
+    for widget in window.winfo_children():
+        widget.destroy()
+
+    title = tk.Label(
+        window,
+        text="ENTER MESSAGE",
+        font=("Arial", 22)
+    )
+    title.pack(pady=20)
+
+    selected_label = tk.Label(
+        window,
+        text=characters[selected],
+        font=theraprism_font
+    )
+    selected_label.pack(pady=10)
+
+    message_label = tk.Label(
+        window,
+        text="|",
+        font=theraprism_font
+    )
+    message_label.pack(pady=10)
+
+    def update_message():
+        display = message[:cursor] + "|" + message[cursor:]
+        message_label.config(text=display)
+
+    def wheel_up():
+        nonlocal selected
+
+        selected = (selected - 1) % len(characters)
+
+        selected_label.config(
+            text=characters[selected]
+        )
+
+    def wheel_down():
+        nonlocal selected
+
+        selected = (selected + 1) % len(characters)
+
+        selected_label.config(
+            text=characters[selected]
+        )
+
+    def select_character():
+        nonlocal message, cursor
+
+        message = (
+            message[:cursor]
+            + characters[selected]
+            + message[cursor:]
+        )
+
+        cursor += 1
+        update_message()
+
+    def add_space():
+        nonlocal message, cursor
+
+        message = (
+            message[:cursor]
+            + " "
+            + message[cursor:]
+        )
+
+        cursor += 1
+        update_message()
+
+    def delete_character():
+        nonlocal message, cursor
+
+        if cursor > 0:
+            message = (
+                message[:cursor - 1]
+                + message[cursor:]
+            )
+
+            cursor -= 1
+            update_message()
+
+    def move_left():
+        nonlocal cursor
+
+        if cursor > 0:
+            cursor -= 1
+
+        update_message()
+
+    def move_right():
+        nonlocal cursor
+
+        if cursor < len(message):
+            cursor += 1
+
+        update_message()
+
+    def finish_message():
+        for widget in window.winfo_children():
+            widget.destroy()
+
+        result_title = tk.Label(
+            window,
+            text="ENCODED MESSAGE",
+            font=("Arial", 22)
+        )
+        result_title.pack(pady=30)
+        
+        original_label = tk.Label(
+          window,
+          text="Original: " + message,
+          font=("Arial", 14)
+        )
+        original_label
+      
+        result_label = tk.Label(
+            window,
+            text=message,
+            font=theraprism_font
+        )
+        result_label.pack(pady=30)
+
+        mode_label = tk.Label(
+            window,
+            text="Mode: " + mode,
+            font=("Arial", 12)
+        )
+        mode_label.pack(pady=10)
+
+        cipher_label = tk.Label(
+            window,
+            text="Cipher: " + cipher,
+            font=("Arial", 12)
+        )
+        cipher_label.pack(pady=5)
+
+    window.bind("<w>", lambda event: wheel_up())
+    window.bind("<s>", lambda event: wheel_down())
+    window.bind("<Return>", lambda event: select_character())
+
+    space_button = tk.Button(
+        window,
+        text="SPACE",
+        font=("Arial", 12),
+        width=10,
+        command=add_space
+    )
+    space_button.pack(pady=5)
+
+    delete_button = tk.Button(
+        window,
+        text="DELETE",
+        font=("Arial", 12),
+        width=10,
+        command=delete_character
+    )
+    delete_button.pack(pady=5)
+
+    finish_button = tk.Button(
+        window,
+        text="FINISH",
+        font=("Arial", 12),
+        width=10,
+        command=finish_message
+    )
+    finish_button.pack(pady=5)
+
+    left_button = tk.Button(
+        window,
+        text="LEFT",
+        font=("Arial", 12),
+        width=10,
+        command=move_left
+    )
+    left_button.pack(pady=5)
+
+    right_button = tk.Button(
+        window,
+        text="RIGHT",
+        font=("Arial", 12),
+        width=10,
+        command=move_right
+    )
+    right_button.pack(pady=5)
+
+    controls = tk.Label(
+        window,
+        text="W/S = wheel    ENTER = select",
+        font=("Arial", 12)
+    )
+    controls.pack(pady=10)
+
+
+def choose_cipher(mode):
+    for widget in window.winfo_children():
+        widget.destroy()
+
+    title = tk.Label(
+        window,
+        text="MYSTERY SHACK DECODER",
+        font=("Arial", 22)
+    )
+    title.pack(pady=25)
+
+    label = tk.Label(
+        window,
+        text="SELECT CIPHER",
+        font=("Arial", 16)
+    )
+    label.pack(pady=10)
+
+    ciphers = [
+        "THERAPRISM",
+        "AUTHOR CODE",
+        "BILL CODE"
+    ]
+
+    for cipher in ciphers:
+        button = tk.Button(
+            window,
+            text=cipher,
+            font=("Arial", 14),
+            width=20,
+            command=lambda c=cipher: select_cipher(mode, c)
+        )
+        button.pack(pady=5)
+
+
+window = tk.Tk()
+
+window.title("Mystery Shack Decoder")
+window.geometry("600x550")
+
+title = tk.Label(
+    window,
+    text="MYSTERY SHACK DECODER",
+    font=("Arial", 22)
+)
+title.pack(pady=25)
+
+mode_label = tk.Label(
+    window,
+    text="SELECT MODE",
+    font=("Arial", 16)
+)
+mode_label.pack(pady=10)
+
+encode_button = tk.Button(
+    window,
+    text="ENCODE",
+    font=("Arial", 14),
+    width=15,
+    command=lambda: choose_cipher("ENCODE")
+)
+encode_button.pack(pady=5)
+
+decode_button = tk.Button(
+    window,
+    text="DECODE",
+    font=("Arial", 14),
+    width=15,
+    command=lambda: choose_cipher("DECODE")
+)
+decode_button.pack(pady=5)
+
+window.mainloop()
