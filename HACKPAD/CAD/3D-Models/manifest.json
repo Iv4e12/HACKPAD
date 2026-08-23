@@ -1,0 +1,75 @@
+{
+  "note": "Poses are applied; assembly offsets are NOT. `offset` is assembly placement in the canonical frame and belongs to the viewport; a pose is print placement. Composing them yields a file that is neither an assembly nor printable.",
+  "offsets_applied": false,
+  "parts": [
+    {
+      "artifact_state": "ready",
+      "build_id": "e921282d-3020-4b2e-8561-79038d9ec87b",
+      "entry": "bottom.stl",
+      "included": true,
+      "mesh": "hackpad_bottom.stl",
+      "offset": null,
+      "pose": {
+        "reason": "authored_orientation_best",
+        "scores": {
+          "bed_contact_area_mm2": 12094.4,
+          "overhang_area_pct": 0.1
+        },
+        "status": "declined"
+      },
+      "pose_applied": false,
+      "pose_state": "declined",
+      "slot": "bottom"
+    },
+    {
+      "artifact_state": "ready",
+      "build_id": "3c8ea2be-5b8c-49a8-a8bb-7c2f5f23b447",
+      "entry": "top.stl",
+      "included": true,
+      "mesh": "hackpad_top.stl",
+      "offset": [
+        0.0,
+        0.0,
+        13.1
+      ],
+      "pose": {
+        "matrix": [
+          [
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.99986977997737,
+            0.01613762956588644,
+            -0.09601889283901599
+          ],
+          [
+            0.0,
+            0.016137629565886435,
+            -0.9998697799773699,
+            7.95833768388996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "reason": "bed_contact_max",
+        "scores": {
+          "bed_contact_area_mm2": 3519.7,
+          "overhang_area_pct": 28.3
+        },
+        "status": "chosen"
+      },
+      "pose_applied": true,
+      "pose_state": "chosen",
+      "slot": "top"
+    }
+  ],
+  "session_id": "v2-iqenGJbVpMj5FB10-8b427049"
+}
