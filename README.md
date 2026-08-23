@@ -4,11 +4,11 @@ A custom Gravity Falls-themed hackpad designed to encode and decode ciphers from
 
 ## Features
 * **Encode and decode** Gravity Falls ciphers
-* **OLED display** for visual feedback
+* **OLED display**
 * **Rotary encoder** for menu navigation
 * **Four switches** for mechanical input
 * **Software** designed with Python
-* **Custom-designed PCB** layout
+* **Custom-designed PCB**
 
 ## How I Built It
 The hackpad uses a Seeed XIAO RP2040, an OLED screen, a rotary encoder, and four switches.
