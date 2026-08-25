@@ -22,8 +22,8 @@ I designed the PCB myself using KiCad and wrote the software in Python. One of t
 ![Schematic](https://github.com/Iv4e12/images/blob/main/devlog3.png?raw=true)
 ![Schematic2](https://github.com/Iv4e12/images/blob/main/Schematic.png?raw=true)
 ![PCB](https://github.com/Iv4e12/images/blob/main/banner.png?raw=true)
-![Case](/home/voxtekenterprises./Pictures/ 2/cad2.png)
-![Case2](/home/voxtekenterprises./Pictures/ 2/cad.png)
+![Case](https://github.com/Iv4e12/images/blob/main/cad.png?raw=true)
+![Case2](https://github.com/Iv4e12/images/blob/main/cad2.png?raw=true)
 
 ## Credits
 Designed and built by me, with light assistance from AI.
